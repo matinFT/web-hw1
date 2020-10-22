@@ -1,44 +1,44 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const port = 3000;
+const multer = require('multer');
+const upload = multer();
 
+// app.set('view engine', 'pug');
+// app.set('views', './views');
 app.use(cors());
+// for parsing application/json
+app.use(bodyParser.json()); 
 
-// Enable CORS for a Single Route
-app.get("/getData", (req, res) => {
- res.send('Hello World!')
-});
-
-// Configuring CORS
-var corsOptions = {
-  origin: `http://localhost:${port}`,
-  // optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-app.get("/getData", (req, res) => {
-  res.json({
-    result: data,
-  });
-  // res.send('Hello World!')
-});
-
-app.post("/addNew", (req, res) => {
-  data.push({ id: data.length+1, name: `n${data.length+1}` });
-  res.write("ok");
-});
+// for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true })); 
+//
+app.use(upload.array()); 
+app.use(express.static('public'));
 
 app.post("/nodejs/sha-256", (req,res) => {
+    var request_json = req.body
+    var first_number = request_json["first number"]
+    var second_number = request_json["second number"] 
+    console.log(first_number)
     res.json({
         result:"my nodejs sha256"
     })
 })
 
-app.post("/golang/sha-256", (req,res) => {
-    res.json({
-        result:"my golang sha256"
-    })
-})
+// app.post("/go/sha-256", (req,res) => {
+//     var request_json = req.body
+//     var first_number = request_json["first number"]
+//     var second_number = request_json["second number"] 
+//     console.log(request_json["first_number"])
+//     console.log(typeof("hello"))
+    
+//     res.json({
+//         result:1
+//     })
+// })
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
