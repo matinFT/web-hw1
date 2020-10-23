@@ -3,8 +3,11 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = 3000;
+
 const multer = require('multer');
 const upload = multer();
+
+const shajs = require('sha.js');
 
 // app.set('view engine', 'pug');
 // app.set('views', './views');
@@ -20,11 +23,11 @@ app.use(express.static('public'));
 
 app.post("/nodejs/sha-256", (req,res) => {
     var request_json = req.body
-    var first_number = request_json["first number"]
-    var second_number = request_json["second number"] 
-    console.log(first_number)
+    var sum = parseInt(request_json["first_number"], 10) + parseInt(request_json["second_number"], 10)
+    var my_hash = shajs('sha256').update(sum.toString()).digest('hex');
+    console.log(sum) 
     res.json({
-        result:"my nodejs sha256"
+        result:my_hash
     })
 })
 
