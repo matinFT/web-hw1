@@ -23,7 +23,7 @@ function form1_golang(){
 function form1_nodejs(){
     function reqListener() {
         var data = JSON.parse(this.responseText);
-        document.getElementById('form1-golang-label').innerHTML = data["result"];
+        document.getElementById('form1-nodejs-label').innerHTML = data["result"];
       }
 
       function reqError(err) {
