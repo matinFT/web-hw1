@@ -3,8 +3,10 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const lineReader = require('line-reader');
+// const lineReader = require('line-reader');
 const port = 3000;
+const nthline = require('nthline');
+const nthLine = require('read-nth-line');
 
 const multer = require('multer');
 const upload = multer();
@@ -34,14 +36,14 @@ app.post("/nodejs/sha-256", (req,res) => {
 
 app.get("/nodejs/write", (req, res) => {
   var line_number = parseInt(req.query["linenumber"]);
-  console.log(typeof(line_number));
-  res.send("fetched line here");
+  console.log(line_number);
+  nthline(line_number - 1, "../h1.txt").then((line) => {
+    res.json({
+      result:line
+    })
+  })
 });
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-
-readStream = fs.createReadStream("../h1.txt");
-lineReader.
+  console.log(`Example app listening at http://localhost:${port}`)})
