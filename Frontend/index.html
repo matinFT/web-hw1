@@ -48,6 +48,7 @@
 
     </style>
     <script>
+        url = "192.168.1.108"
         function form1_golang() {
             function reqListener() {
                 // var data = JSON.parse(this.responseText);
@@ -61,7 +62,7 @@
             var oReq = new XMLHttpRequest();
             oReq.onload = reqListener;
             oReq.onerror = reqError;
-            oReq.open('post', 'http://localhost:3001/go/sha-256');
+            oReq.open('post', `http://${url}:3001/go/sha-256`);
             oReq.setRequestHeader('Content-type', 'application/json');
             data = {
                 "first_number": document.getElementById('form1-first-number').value,
@@ -83,7 +84,7 @@
             var oReq = new XMLHttpRequest();
             oReq.onload = reqListener;
             oReq.onerror = reqError;
-            oReq.open('post', 'http://localhost:3000/nodejs/sha-256');
+            oReq.open('post', `http://${url}:3000/nodejs/sha-256`);
             oReq.setRequestHeader('Content-type', 'application/json');
             data = {
                 "first_number": document.getElementById('form1-first-number').value,
@@ -106,7 +107,7 @@
             oReq.onload = reqListener;
             oReq.onerror = reqError;
             data = document.getElementById("form1-line-number").value;
-            oReq.open('get', `http://localhost:3003/golang/write?linenumber=${data}`);
+            oReq.open('get', `http://${url}:3003/golang/write?linenumber=${data}`);
             oReq.setRequestHeader('Content-type', 'application/json');
             oReq.send();
         }
@@ -125,7 +126,7 @@
             oReq.onload = reqListener;
             oReq.onerror = reqError;
             data = document.getElementById("form1-line-number").value;
-            oReq.open('get', `http://localhost:3000/nodejs/write?linenumber=${data}`);
+            oReq.open('get', `http://${url}:3000/nodejs/write?linenumber=${data}`);
             oReq.setRequestHeader('Content-type', 'application/json');
             oReq.send();
         }

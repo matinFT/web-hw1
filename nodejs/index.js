@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 // const fs = require("fs");
 const port = 3000;
 const nthline = require('nthline');
-
+const path = require('path')
 const multer = require('multer');
 const upload = multer();
 
@@ -33,8 +33,7 @@ app.post("/nodejs/sha-256", (req,res) => {
 });
 
 app.get("", (req, res) => {
-  console.log("here")
-  res.sendFile("E:/MyEd/Sharif/Term 5/WEB/Assignments/HW1/sha/Frontend/index.html")
+  res.sendFile(path.join(__dirname , "../Frontend/index.html"))
 })
 
 app.get("/nodejs/write", (req, res) => {
