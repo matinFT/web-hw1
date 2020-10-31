@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
+
+
+
+
     <style>
         #form1 {
             padding: 5px;
@@ -127,29 +131,68 @@
         }
     
     </script>
-    <!-- <script src="index.js"></script> -->
+
+
+   
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <style>
+        body {
+            background-color: lightblue;s   
+        }
+        button{
+            font-family: "Sofia";
+            font-size:22px;
+        }
+        label{
+            font-family: Impact, Charcoal, sans-serif;
+        }
+        .btn {
+             background-color: #4CAF50;
+             border: none;
+             color: white;
+             padding: 10px 15px;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 16px;
+             margin: 4px 2px;
+             cursor: pointer;
+        }
+        .btn2 {background-color: #008CBA;} /* Blue */
+
+    </style>
+
+
 </head>
+
 
 <body>
     <div id="container">
         <form id="form1" method="post">
             <label for="first number">enter first number</label>
-            <input type="text" name="first number" id="form1-first-number" placeholder="first number" />
+           
+                <input type="text" name="first number" id="form1-first-number" placeholder="first number" />
+            
             <label for="second number">enter second number</label>
-            <input type="text" name="second number " id="form1-second-number" placeholder="second number" />
+           
+                <input type="text" name="second number " id="form1-second-number" placeholder="second number" />
+            
+
             <div id="shaw256-calculator">
-                <button type="button" value="golang" onclick="form1_golang()">golang</button>
+                <button class="btn" type="button" value="golang" onclick="form1_golang()">golang</button>
                 <label id="form1-golang-label">golang</label>
-                <button type="button" value="js" onclick="form1_nodejs()">js</button>
+                <button class="btn" type="button" value="js" onclick="form1_nodejs()">js</button>
                 <label id="form1-nodejs-label">nodejs</label>
             </div>
         </form>
 
         <div id="container">
             <form id="form2" method="post">
+                
                 <input type="text" name="line number" id="form1-line-number" placeholder="line number" />
-                <button type="button" value="golang" onclick="form2_golang()">golang</button>
-                <button type="button" value="nodejs" onclick="form2_nodejs()">nodejs</button>
+                <button class="btn btn2" type="button" value="golang" onclick="form2_golang()">golang</button>
+                <button class="btn btn2" type="button" value="nodejs" onclick="form2_nodejs()">nodejs</button>
                 <label id="form2-label">the line would be shown here</label>
             </form>
         </div>
