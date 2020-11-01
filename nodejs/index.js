@@ -26,10 +26,15 @@ app.use(express.static('public'));
 app.post("/nodejs/sha-256", (req,res) => {
     var request_json = req.body;
     var sum = parseInt(request_json["first_number"], 10) + parseInt(request_json["second_number"], 10);
+    if (isNaN(sum)){
+      return res.status(400).end("invalid inputs")
+    }
     var my_hash = shajs('sha256').update(sum.toString()).digest('hex');
+    console.log(sum)
     res.json({
         result:my_hash
     });
+    
 });
 
 app.get("", (req, res) => {
@@ -38,7 +43,7 @@ app.get("", (req, res) => {
 
 app.get("/nodejs/write", (req, res) => {
   var line_number = parseInt(req.query["linenumber"]);
-  nthline(line_number - 1, "../h1.txt").then((line) => {
+  nthline(line_number, path.join(__dirname, "../h1.txt")).then((line) => {
     res.json({
       result:line
     })
