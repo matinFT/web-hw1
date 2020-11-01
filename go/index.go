@@ -60,9 +60,7 @@ func ServerWrite(w http.ResponseWriter, r *http.Request){
 	}
 	file.Close()
 	a := txtlines[line_number]
-	fmt.Println(reflect.TypeOf(a))
 	resp := MyRespond{Result:a}
-	fmt.Println(resp)
 	js_resp, err := json.Marshal(resp)
 	if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

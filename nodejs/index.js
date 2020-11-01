@@ -23,6 +23,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html'],
+  index: false,
+  maxAge: '1d',
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now())
+  }
+}
+app.use(express.static(path.join(__dirname, "../Frontend")))
+
 app.post("/nodejs/sha-256", (req,res) => {
     var request_json = req.body;
     var sum = parseInt(request_json["first_number"], 10) + parseInt(request_json["second_number"], 10);
@@ -30,7 +43,6 @@ app.post("/nodejs/sha-256", (req,res) => {
       return res.status(400).end("invalid inputs")
     }
     var my_hash = shajs('sha256').update(sum.toString()).digest('hex');
-    console.log(sum)
     res.json({
         result:my_hash
     });

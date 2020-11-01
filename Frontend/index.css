@@ -1,0 +1,62 @@
+#form1 {
+    padding: 5px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: auto auto;
+    width: 50%;
+}
+
+#shaw256-calculator {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 30% 20% 30% 20%;
+    grid-gap: 10px;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1;
+    grid-row-gap: 10px;
+}
+
+#form2 {
+    padding: 5px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 30% 35% 35%;
+    margin: auto auto;
+    width: 50%;
+}
+
+#form2-label {
+    grid-column: span 2;
+}
+
+body {
+    background-color: lightblue;
+    background-image:url("1.jpg");
+}
+button{
+    font-family: "Sofia";
+    font-size:22px;
+}
+label{
+    font-family: Impact, Charcoal, sans-serif;
+    color:red;
+}
+.btn {
+     background-color: #4CAF50;
+     border: none;
+     color: white;
+     padding: 10px 15px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 2px;
+     cursor: pointer;
+}
+.btn2 {background-color: #008CBA;} /* Blue */       
+
+
