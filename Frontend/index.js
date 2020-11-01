@@ -1,9 +1,8 @@
-
 url = "192.168.1.101"
         function form1_golang() {
             function reqListener() {
                 var data = JSON.parse(this.responseText);
-                document.getElementById('form1-golang-label').innerHTML = this.responseText;
+                document.getElementById('form1-golang-label').innerHTML = data["Result"];
             }
 
             function reqError(err) {

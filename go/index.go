@@ -2,15 +2,15 @@ package main
 
 import (
 	"encoding/json"
-	// "crypto/sha256"
+	"crypto/sha256"
     "fmt"
 	"net/http"
 	"bufio"
-	"reflect"
+	// "reflect"
 	// "encoding/hex"
 	"os"
 	"log"
-	// "io/ioutil"
+	"io/ioutil"
 	"strconv"
 )
 
@@ -24,25 +24,30 @@ func main() {
 
 func ServerSendSha256(w http.ResponseWriter, r *http.Request) {
 	
-	fmt.Println(r)
-	// var first_num = 0 
-	// var second_num = 0
-	// first_num, _ = strconv.Atoi(r.URL.Query()["first_number"][0])
-	// second_num, _ = strconv.Atoi(r.URL.Query()["second_number"][0])
-	// var sum = first_num + second_num
-	// var sum_hash = sha256.Sum256([]byte(strconv.Itoa(sum)))	
-	// s := fmt.Sprintf("%x", sum_hash)
-	// fmt.Println(s)
-	// resp := MyRespond{s}
-	// fmt.Println(resp)
-	// js_resp, err := json.Marshal(resp)
-	// fmt.Println(js_resp)
-	// if err != nil {
-	// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 	return
-	// }
-	// w.Header().Set("Content-Type", "application/json")
-	// w.Write(js_resp)
+	bodyBytes, _ := ioutil.ReadAll(r.Body)
+	var data hash_input
+	_ = json.Unmarshal(bodyBytes, &data)
+	first_num, err1 := strconv.Atoi(data.First_number)
+	second_num, err2 := strconv.Atoi(data.Second_number)
+	if err1 != nil || err2 != nil {
+		if err1 != nil{
+			http.Error(w, err1.Error(), 400)
+			return
+		}
+		http.Error(w, err2.Error(), 400)
+		return
+	}
+	var sum = first_num + second_num
+	var sum_hash = sha256.Sum256([]byte(strconv.Itoa(sum)))	
+	s := fmt.Sprintf("%x", sum_hash)
+	resp := MyRespond{s}
+	js_resp, err := json.Marshal(resp)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js_resp)
 	
 }
 
@@ -72,4 +77,9 @@ func ServerWrite(w http.ResponseWriter, r *http.Request){
 
 type MyRespond struct {
 	Result    string
+  }
+
+  type hash_input struct{
+	  First_number	string
+	  Second_number	string
   }

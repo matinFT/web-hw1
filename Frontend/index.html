@@ -5,171 +5,13 @@
     <title>HW1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="index.css" />
-
-
-
-
-    <!-- <style>
-        #form1 {
-            padding: 5px;
-            border: 2px solid black;
-            display: grid;
-            grid-template-columns: 30% 70%;
-            margin: auto auto;
-            width: 50%;
-        }
-
-        #shaw256-calculator {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 30% 20% 30% 20%;
-            grid-gap: 10px;
-        }
-
-        #container {
-            display: grid;
-            grid-template-columns: 1;
-            grid-row-gap: 10px;
-        }
-
-        #form2 {
-            padding: 5px;
-            border: 2px solid black;
-            display: grid;
-            grid-template-columns: 30% 35% 35%;
-            margin: auto auto;
-            width: 50%;
-        }
-
-        #form2-label {
-            grid-column: span 2;
-        }
-
-    </style>
-     -->
-   
-   
-   <script src="index.js"></script>
-   <!-- <script>
-        url = "192.168.1.101"
-        function form1_golang() {
-            function reqListener() {
-                var data = JSON.parse(this.responseText);
-                document.getElementById('form1-golang-label').innerHTML = this.responseText;
-            }
-
-            function reqError(err) {
-                console.log('Fetch Error :-S', err);
-            }
-
-            var oReq = new XMLHttpRequest();
-            oReq.onload = reqListener;
-            oReq.onerror = reqError;
-            oReq.open('post', `http://${url}/go/sha-256`);
-            oReq.setRequestHeader('Content-type', 'application/json');
-            data = {
-                "first_number": document.getElementById('form1-first-number').value,
-                "second_number": document.getElementById('form1-second-number').value
-            }
-            oReq.send(JSON.stringify(data));
-        };
-
-        function form1_nodejs() {
-            function reqListener() {
-                var data = JSON.parse(this.responseText);
-                document.getElementById('form1-nodejs-label').innerHTML = data["result"];
-            }
-
-            function reqError(err) {
-                
-                console.log(err);
-            }
-
-            var oReq = new XMLHttpRequest();
-            oReq.onload = reqListener;
-            oReq.onerror = reqError;
-            oReq.open('post', `http://${url}/nodejs/sha-256`);
-            oReq.setRequestHeader('Content-type', 'application/json');
-            data = {
-                "first_number": document.getElementById('form1-first-number').value,
-                "second_number": document.getElementById('form1-second-number').value
-            }
-            oReq.send(JSON.stringify(data));
-        };
-
-        function form2_golang() {
-            function reqListener() {
-                var data = JSON.parse(this.responseText);
-                document.getElementById('form2-label').innerHTML = data["Result"];
-            }
-
-            function reqError(err) {
-                console.log('Fetch Error :-S', err);
-            }
-
-            var oReq = new XMLHttpRequest();
-            oReq.onload = reqListener;
-            oReq.onerror = reqError;
-            data = document.getElementById("form1-line-number").value;
-            oReq.open('get', `http://${url}/go/write?linenumber=${data}`);
-            oReq.setRequestHeader('Content-type', 'application/json');
-            oReq.send();
-        }
-
-        function form2_nodejs() {
-            function reqListener() {
-                var data = JSON.parse(this.responseText);
-                document.getElementById('form2-label').innerHTML = data["result"];
-            }
-
-            function reqError(err) {
-                console.log('Fetch Error :-S', err);
-            }
-
-            var oReq = new XMLHttpRequest();
-            oReq.onload = reqListener;
-            oReq.onerror = reqError;
-            data = document.getElementById("form1-line-number").value;
-            oReq.open('get', `http://${url}/nodejs/write?linenumber=${data}`);
-            oReq.setRequestHeader('Content-type', 'application/json');
-            oReq.send();
-        }
-    
-    </script>
- -->
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <!-- <style>
-        body {
-            background-color: lightblue;
-            background-image:url("1.jpg");
-        }
-        button{
-            font-family: "Sofia";
-            font-size:22px;
-        }
-        label{
-            font-family: Impact, Charcoal, sans-serif;
-            color:red;
-        }
-        .btn {
-             background-color: #4CAF50;
-             border: none;
-             color: white;
-             padding: 10px 15px;
-             text-align: center;
-             text-decoration: none;
-             display: inline-block;
-             font-size: 16px;
-             margin: 4px 2px;
-             cursor: pointer;
-        }
-        .btn2 {background-color: #008CBA;} /* Blue */
-
-    </style>
- -->
-
+    
+    <script src="index.js"></script>
+ 
+  
 </head>
 
 
@@ -177,12 +19,10 @@
     <div id="container">
         <form id="form1" method="post">
             <label for="first number">enter first number</label>
-           
-                <input type="text" name="first number" id="form1-first-number" placeholder="first number" />
+            <input type="text" name="first number" id="form1-first-number" placeholder="first number" />
             
             <label for="second number">enter second number</label>
-           
-                <input type="text" name="second number " id="form1-second-number" placeholder="second number" />
+            <input type="text" name="second number " id="form1-second-number" placeholder="second number" />
             
 
             <div id="shaw256-calculator">
